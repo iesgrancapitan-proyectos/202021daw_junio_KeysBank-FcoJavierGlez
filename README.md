@@ -1,104 +1,146 @@
-# Módulo Proyecto Integrado del IES Gran Capitán
+# :key: KeysBank :key:
+## Autor: González Sabariego, Francisco Javier.
 
+<div style="text-align: left;">
+    <img src="https://img.shields.io/badge/PHP-7.4-9cf" alt="language">
+    <img src="https://img.shields.io/badge/version-0.8.0-blue" alt="version">
+    <a href="https://twitter.com/intent/follow?screen_name=Fco_Javier_Glez" target="_blank">
+        <img src="https://img.shields.io/twitter/follow/Fco_Javier_Glez?style=social&logo=twitter" alt="follow on Twitter">
+    </a>
+</div>
 
-- [Módulo Proyecto Integrado del IES Gran Capitán](#módulo-proyecto-integrado-del-ies-gran-capitán)
-  - [Instrucciones para el desarrollo del Módulo Proyecto Integrado](#instrucciones-para-el-desarrollo-del-módulo-proyecto-integrado)
-    - [Obligaciones por parte del alumnado](#obligaciones-por-parte-del-alumnado)
-    - [Información que debe aparecer en este README](#información-que-debe-aparecer-en-este-readme)
-    - [Asignación/Elección de temas para el Proyecto y Convocatorias](#asignaciónelección-de-temas-para-el-proyecto-y-convocatorias)
-    - [Descripción del Desarrollo del Proyecto](#descripción-del-desarrollo-del-proyecto)
-  - [Curriculum  Didáctico del Módulo Proyecto Integrado](#curriculum--didáctico-del-módulo-proyecto-integrado)
-    - [Objetivos del Módulo](#objetivos-del-módulo)
-    - [Evaluación del Proyecto Integrado](#evaluación-del-proyecto-integrado)
+---
+## Índice 
+1. [Descripción del proyecto](#descripción)
+2. [Información sobre despliegue](#despliegue)
+3. [Información sobre cómo usarlo](#cómo-usar-la-app)
+4. [Autores](#autores)
+5. [Licencia](#license)
+---
+## Descripción 
+**KeysBank es una aplicación web de gestión de contraseñas** diseñada tanto para uso privado cómo público.
 
-## Instrucciones para el desarrollo del Módulo Proyecto Integrado
+Los usuarios con un perfil activado podrán registrar, editar y eliminar sus cuentas cuando lo requieran, beneficiándose de las herramientas que la app pone a su disposición cómo: 
 
-### Obligaciones por parte del alumnado
-Una vez facilitado el enlace de Classroom Github para los Proyectos Integrados que genera este repositorio, el Tutor de Proyecto da por sabida y explicada toda la documentación que aquí aparece. El alumno tiene la obligación de leer por completo toda la documentación.
+1. **Un generador de contraseñas aleatorias que ofrece la contraseña más robusta posible para las características solicitadas.**
+2. **Alertas de nick usados en otras cuentas registradas.**
+3. **Alerta de contraseña demasiado antigua.**
+4. **Capacidad de copiar al portapapeles la contraseña de una cuenta.**
+5. **Etc.**
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
+En una aplicación de estas características **es fundamental la seguridad**. Por tanto, para garantizar un servicio robusto y evitar posibles filtraciones de información sensible la app se construye sobre 4 pilares:
+1. **Base de datos encriptada.**
+2. **Protección ante posibles inyecciones SQL.**
+3. **Consultas a la API para obtención dinámica de recursos o información (evitando el uso de información sensible en el árbol DOM).**
+4. **Navegación y enrutamiento seguro según el perfil y los datos asociados.**
 
-### Información que debe aparecer en este README
-Siguiendo unas buenas prácticas de uso de repositorios en una plataforma de control de versiones, este README.md, al finalizar el proyecto debe aparecer **mínimo** la siguiente información:
+[:arrow_up:](#key-keysbank-key)
 
-1. Descripción del proyecto
-2. Información sobre despliegue
-3. Información sobre cómo usarlo
-4. Autores
+---
 
-Como esta información debería estar detallada en la wiki, desarrollar una pequeña introducción y referenciar a la sección de la wiki donde esté toda la información detallada. _(Todo el contenido actual debe ser sustituido por esta información)_
+## Despliegue 
+1. **Descarga el proyecto:**
+    - Puedes descargar el proyecto pulsando el botón de code y a continuación en download zip:
+    ![Botón descargar](readme_img/code_download_button.png)
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
+    - O si tienes instalado Git en tu equipo haciendo uso del siguiente comando:
+    ~~~
+        git clone https://github.com/FcoJavierGlez/KeysBank.git .
+    ~~~
 
-### Asignación/Elección de temas para el Proyecto y Convocatorias
-__El tutor/a convocará al alumnado de Proyecto en los primeros días tras la evaluación (septiembre o marzo). La asistencia es obligatoria__ pues se hará la exposición  de temas de proyectos y la recogida de propuestas del alumnado (anteproyectos). La asistencia es obligatoria.
+2. **Descarga e instalación de XAMPP:**
+    - Ahora procedemos a [descargar XAMPP](https://www.apachefriends.org/download.html). **¡IMPORTANTE!: Asegúrate de instalar, o tener instalado, un XAMPP que ejecute una versión de PHP ~7.4**
+    ![Versión de XAMPP](readme_img/xampp_versions.png)  
+    _Versiones de XAMPP_
 
-Una vez asignados los proyectos al alumnado y al profesor/a que lo tutorizará, el tutor/a establecerá una primera reunión con el alumno/a. La falta de asistencia a esta cita indicará que el alumno/a RENUNCIA AL SEGUIMIENTO del proyecto y por tanto gastaría una convocatoria de las dos de las que dispone en total  para la superación del módulo.
+    - Una vez se haya descargado procede a instalarlo y **asegúrate de instalar: PHP, phpMyAdmin y MySQL**.
 
-_**Según se recoge en el Plan de Centro , el alumnado de Proyecto sólo dispone de una convocatoria por curso escolar**_. **De este modo, el alumno que gasta la convocatoria elegida en el sobre de matriculación no podrá cursar el módulo de Proyecto hasta el siguiente curso escolar.  Para evitar que gaste convocatoria el alumno/a debe anular matrícula en el periodo que establece la normativa (preguntar en la secretaría del centro).**
+3. **Instalación de la App:**
+    - Dirígete a la carpeta donde hayas instalado XAMPP (en windows por defecto es C:\xampp). En su interior encontrarás una carpeta llamada _htdocs_, **entra en _htdocs_ y copia la carpeta _keysbank_ (y todo su contenido)** que acabas de descargar de este mismo repositorio.
+    ![Carpeta htdocs](readme_img/htdocs_folder.png)  
+    _Carpeta htdocs_
+    
+4. **Creación de la base de datos:**
+    - Ahora abre el panel de control de XAMPP (puedes ejecutarlo en esta ruta: C:\xampp\xampp-control.exe) y arranca el servicio de apache y de mysql como verás en la siguiente foto:
+    ![Inicio de servicios Apache y MySQL](readme_img/inicio_apache_mysql_xampp.png)  
+    _Panel de control de XAMPP_
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
-### Descripción del Desarrollo del Proyecto
-El desarrollo del módulo consiste en un seguimiento del desarrollo, una documentación que se irá elaborando durante el proceso, el desarrollo (e implantación si procede)  del producto  y una defensa final.
+    - Una vez arrancados ambos servicios vamos a crear la base de datos. Abre un navegador cualquiera y dirígite a esta URL: _localhost/phpmyadmin/index.php_
 
-1. **Documentación a entregar.**
+    - **Crea una base de datos** seleccionando la opción de "Nueva" en el panel de la izquierda de phpMyAdmin:
+    ![Creación base de datos paso 1](readme_img/create_db.png)  
+    _Botón crear base de datos_
 
-    Si el alumno/a desea proponer un tema, debe presentar en la primera semana un anteproyecto ([ver Anteproyecto_IESGranCapitan](Anteproyecto_IESGranCapitan.odt))
+    - La base de datos **debe llamarse _keysbank_ y debe poseer el juego de caracteres _utf8_spanish_ci_** como se ve a continuación:
+    ![Creación base de datos paso 2](readme_img/create_db2.png)  
+    _Nombre y juego de caracteres_
 
-    Una vez asignado el tema de PI (o aprobado el anteproyecto propuesto) se deberá preparar la documentación del proyecto, que será presentada a través de una wiki asociada la repositorio con la estructura indicada _**[aquí](https://github.com/iesgrancapitan-proyectos/Plantilla_Documentacion_Wiki_PI/wiki)**_ 
+    - Una vez creada la base de datos **importamos el fichero _keysbank.sql_ que se encuentra en _keysbank/db/keysbank.sql_** como se ve a continuación:
 
-    La documentación final se presentará en formato electrónico (no impresa). La documentación definitiva tiene que ser subida al repositorio del departamento antes del dia de la presentación.
-**Importante: NO SE EVALUARÁ SI VUESTRA DOCUMENTACIÓN NO ESTÁ SUBIDA ANTES DEL DIA DE LA PRESENTACIÓN.**
+    ![Creación base de datos paso 3](readme_img/create_db3.png)  
+    _Vista importar fichero_
+    ![Creación base de datos paso 4](readme_img/create_db4.png)  
+    _Ruta fichero keysbank.sql_
 
-2. **Seguimiento.** Durante el período de seguimiento, el/la tutor/a establecerá un calendario de seguimiento indicando:
-   1. Fecha y hora de cada reunión de seguimiento.
-   2. Hitos que el alumno debe cumplir en la realización del proyecto para ser revisados por el tutor en cada reunión. Antes de ese dia el alumnado debe enviar la documentación de lo realizado (si procede) para que se pueda revisar antes de la cita.
+    - Seleccionado el fichero aceptamos y **se creará la base de datos de la aplicación keysbank**:
 
-3. **Primera Reunión:** El alumno/a debe tener una 1ra Reunión con su tutor/a  cuando ambo/as acuerden _**(preferiblemente dentro de las dos primeras semanas tras comenzar el módulo)**_. En dicha reunión se aclararán los objetivos del proyecto y se resolverán dudas. 
+    ![Creación base de datos paso 5](readme_img/create_db5.png)  
+    _Aceptamos_
 
-    El número de sesiones de seguimiento para evaluar el progreso del proyecto será establecido en función de la dificultad y longitud del proyecto. Si el alumno/a  no hubiera avanzado en el trabajo lo suficiente para cumplir un hito o no se presenta a las reuniones establecidas de forma reiterada, el tutor podrá considerar que el proyecto no cumplelos RA (resultados de aprendizaje)  mínimos para superar el módulo con evaluación positiva y comunicará al alumno/a la imposibilidad de asistir y realizar la defensa del mismo.
- 
-4. **La defensa de los proyectos** tendrá una duración de 30 minutos dividida en:
-    • Exposición. 	
-    • Demostración.
-    • Preguntas. 
-La defensa/presentación de los proyectos se realizará los días previos a la sesión de evaluación. **El día y hora concreto os lo comunicará vuestro tutor/a de proyecto en las fechas cercanas a la presentación.**
+5. **Puesta en marcha:**
+    - Si todo ha ido bien ahora podremos acceder a la aplicación a través de esta ruta en el navegador: _localhost/keysbank/_
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
+    ![login](readme_img/login.png)  
+    _Login de la app_
 
-## Curriculum  Didáctico del Módulo Proyecto Integrado
-### Objetivos del Módulo
+[:arrow_up:](#key-keysbank-key)
 
-Este módulo profesional complementa la formación establecida para el resto de los módulos profesionales que integran el título en las funciones de análisis del contexto, diseño del proyecto y organización de la ejecución.
-- La función de análisis del contexto 	incluye las subfunciones de: 	
-  - Recopilación de información. 
-  - Identificación y priorización de necesidades.
-  - Identificación de los aspectos que facilitan o dificultan el desarrollo de la posible intervención.
+---
 
-- La función de diseño del proyecto 	tiene como objetivo establecer las líneas generales para dar respuesta a las necesidades planteadas concretando los aspectos relevantes para su realización. Incluye las subfunciones de: 
-  - Definición o adaptación de la intervención.
-  - Priorización y secuenciación de las acciones.
-  - Planificación de la intervención.
-  - Determinación de recursos.
-  - Planificación de la evaluación.
-  - Diseño de documentación.
-  - Plan de atención al cliente.
+## Cómo usar la app
+**La aplicación trae una cuenta administrador** y para poder usar la aplicación primero deberás conectarte como tal, **nick: admin y pass: admin**, y cambiar obligatoriamente su contraseña.  **Hasta que no cambies la contraseña que trae el administrador por defecto no podrás gestionar ni usar la app.**
 
-- La función de organización de la ejecución incluye las subfunciones de: 
-  - Detección de demandas y necesidades.
-  - Programación.
-  - Gestión.
-  - Coordinación y supervisión de la intervención.
-  - Elaboración de informes.
+Según si tu perfil es administrador o usuario tendrás unas capacidades u otras:
+1. **Como administrador:**
+    - Podrás activar, banear o eliminar usuarios:
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
-### Evaluación del Proyecto Integrado
+    ![Gestión de usuarios (Administrador)](readme_img/users_list.png)  
+    _Gestión de usuarios (Administrador)_
 
-| Resultados de Aprendizaje | % Nota |
-| -- | -- | 
-| RA1. Identifica necesidades del sector productivo relacionándolas con proyectos tipo que las puedan satisfacer. _(Justificación de proyecto, estado actual y necesidad/solución a un problema existente)_ | 5% |
-| RA2. Diseña proyectos relacionados con las competencias expresadas en el título, incluyendo y desarrollando las fases que lo componen _(Diseño , Planificación y secuenciación de acciones, determinación de recursos)_ | 20% |
-| RA3. Planifica la puesta en funcionamiento o ejecución del proyecto, determinando el plan de intervención y la documentación asociada. _(Implementación)_ | 65% |
-| RA4. Define los procedimientos para el seguimiento y control en la ejecución del proyecto, justificando la selección de variables e instrumentos empleados. _(Manual de funcionamiento,  mantenimiento/actualizaciones  del producto,  futuras mejoras) _ | 10% |
+    - Podrás Añadir, editar y eliminar plataformas ordenadas por categorías y subcategorías:
 
-[:arrow_up:](#módulo-proyecto-integrado-del-ies-gran-capitán)
+    ![Gestión de plataformas (Administrador)](readme_img/platforms_list.png)  
+    _Gestión de plataformas (Administrador)_
+    ![Añadir plataformas (Administrador)](readme_img/add_platform.png)  
+    _Añadir plataformas (Administrador)_
+2. **Como usuario:**
+    - Añadir/editar cuentas usando un generador de contraseñas aleatorio de entre 6-64 caracteres, que garantiza las contraseñas más robustas posibles para las características seleccionadas, nivel de fortaleza de contraseña y aviso de nick o nombre de cuenta usado en otras cuentas registradas por el usuario propietario:
+
+    ![Añadir cuenta (Usuario)](readme_img/add_account.png)  
+    _Añadir cuenta (Usuario) usando el generador de contraseñas aleatorio y con mensaje de nick usado en otra cuenta propietaria_
+
+    - Podrás buscar tus cuentas, consultar sus datos y copiar rápidamente la contraseña para un inicio de sesión rápido (sin tener que recordar la contraseña):
+
+    ![Lista de cuentas (Usuario)](readme_img/accounts_list.png)  
+    _Lista de cuentas (Usuario)_
+    ![Copia de contraseña (Usuario)](readme_img/copy_pass.png)  
+    _Copia de contraseña (Usuario)_
+
+[:arrow_up:](#key-keysbank-key)
+
+---
+
+## Autores 
+### Version ~1.0.0: Francisco Javier González Sabariego
+- GitHub: [FcoJavierGlez](https://github.com/FcoJavierGlez)
+- LinkedIn: [Francisco Javier González Sabariego](https://www.linkedin.com/in/francisco-javier-gonz%C3%A1lez-sabariego-51052a175/)
+- Twitter: [@Fco_Javier_Glez](https://twitter.com/Fco_Javier_Glez)
+
+[:arrow_up:](#key-keysbank-key)
+
+---
+
+## License 
+Copyright (c) 2021 Francisco Javier González Sabariego. [Licensed under MIT license](https://github.com/FcoJavierGlez/keys_bank/blob/main/LICENSE).
+
+[:arrow_up:](#key-keysbank-key)
