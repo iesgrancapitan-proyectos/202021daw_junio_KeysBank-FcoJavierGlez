@@ -1,0 +1,11 @@
+index.html
+
+[hc]*.php
+!class/error/[hc]*.php
+!include/header.php
+
+api/pru*
+
+js/pruebas*.js
+
+drafts/
