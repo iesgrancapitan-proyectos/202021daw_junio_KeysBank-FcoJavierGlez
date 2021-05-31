@@ -1,0 +1,12 @@
+index.html
+
+[hc]*.php
+!class/error/[hc]*.php
+!include/header.php
+!views/index/change_admin_pass.php
+
+api/pru*
+
+js/pruebas*.js
+
+drafts/
